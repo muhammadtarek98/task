@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>employees attendance</title>
+</head>
+<body>
+    {% csrf_token %}
+
+<form method="get">
+<h1>Attendance table</h1>
+  <table border="1">
+      <tr>
+        <th>Employee ID</th>
+        <th>Employee name</th>
+        <th>Day</th>
+      </tr>
+      {% for emp in attendance %}
+        <tr>
+            <td>{{emp.id}}</td>
+            <td>{{emp.employee}}</td>
+            <td>{{emp.day}}</td>
+        </tr>
+      {% endfor %}
+  </table>
+<br>
+<h1>Attendance Actions table</h1>
+  <table border="1">
+      <tr>
+        <th>id</th>
+          <th>Employee</th>
+          <th>Day</th>
+        <th>Action time</th>
+        <th>Action</th>
+      </tr>
+        {% for action in attendance_action%}
+      <tr>
+            <td>{{action.id}}</td>
+            <td>{{action.attendanceid.employee}}</td>
+            <td>{{action.attendanceid.day}}</td>
+            <td>{{action.actiontime}}</td>
+            <td>{{action.action}}</td>
+        </tr>
+      {% endfor %}
+    </table>
+</form>
+
+</body>
+</html>
